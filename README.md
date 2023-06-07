@@ -1,24 +1,134 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 📗 Blog App
 
-Things you may want to cover:
+- [📗 Table of Contents](#-table-of-contents)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+    - [Run Tests](#run-tests)
+  - [👥 Authors ](#-authors-)
+- [🔭 Future Features:](#-future-features)
+  - [🤝 Contributing ](#-contributing-)
+  - [⭐️ Show your support ](#️-show-your-support-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
+  - [📝 License ](#-license-)
 
-* Ruby version
+<!-- PROJECT DESCRIPTION -->
 
-* System dependencies
+# Blog App <a name="about-project"></a>
 
-* Configuration
+Blog App is web app to display user comments and post, It allows for new users to join the blog, post a comment and can also comment on post from other users.
 
-* Database creation
+## 🛠 Built With <a name="built-with"></a>
 
-* Database initialization
+### Tech Stack <a name="tech-stack"></a>
 
-* How to run the test suite
+<details>
+  <summary>Client</summary>
+  <ul>
+    <li><a href="https://rubyonrails.org/">Ruby on Rails</a></li>
+  </ul>
+</details>
 
-* Services (job queues, cache servers, search engines, etc.)
+<details>
+  <summary>Database</summary>
+  <ul>
+    <li><a href="https://www.postgresql.org/">Postgres</a></li>
+  </ul>
+</details>
 
-* Deployment instructions
+<!-- Features -->
 
-* ...
+### Key Features <a name="key-features"></a>
+
+- Post comments
+- Comment on Posts
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- GETTING STARTED -->
+
+## 💻 Getting Started <a name="getting-started"></a>
+
+### Prerequisites
+
+In order to run this project you need:
+-  Git Installed
+-  Ruby on Rails Installed
+-  Node.js Installed
+- Postgres Database installed
+- Create a local directory that you want to clone the repository.
+- Open the command prompt in the created directory.
+- On the terminal run this command git clone https://github.com/Tafloninno/Blog-App
+
+
+
+### Setup
+
+Clone this repository to your desired folder:
+
+```sh 
+git clone https://github.com/Tafloninno/Blog_App
+  ```
+  ```sh 
+  cd Blop-App
+  ```
+  ```sh 
+  bundle install
+  ```
+### Run Tests
+  ```sh 
+  bin/rails rspec spec
+  ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- AUTHORS -->
+
+## 👥 Authors <a name="authors"></a>
+
+### 👤 **Mugisha Innocent**:
+- GitHub: [Tafloninno](https://github.com/Tafloninno)
+- LinkedIn: [Mugisha Innocent](https://www.linkedin.com/in/mugisha-innocent/)
+  
+# 🔭 Future Features:
+- Validations and Model specs.
+- Processing data in models.
+- Setup and controllers.
+- Add authorization rules
+
+## 🤝 Contributing <a name="contributing"></a>
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SUPPORT -->
+
+## ⭐️ Show your support <a name="support"></a>
+If you liked this project, give it a ⭐️ and kindly send to me an e-mail expressing it, it would make my day and fuel my motivation.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+I would like to thank Microverse team and My partner for this journey.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- LICENSE -->
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](./LICENSE) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
