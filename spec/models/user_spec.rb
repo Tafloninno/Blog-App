@@ -1,35 +1,49 @@
 require 'rails_helper'
+# require_relative '../app/models/user'
 
 RSpec.describe User, type: :model do
-  subject { User.new(name: 'Taflon', photo: 'https://avatars.githubusercontent.com/u/118063058?v=4', post_counter: 10, bio: 'Full-stack developer') }
+  describe 'validations' do
+    subject { User.new(name: 'Taflon', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.') }
 
-  before { subject.save! }
+    it 'Name should be present' do
+      subject.name = nil
+      expect(subject).to_not be_valid
+    end
 
-  it 'Name should be present' do
-    subject.name = nil
-    expect(subject).to_not be_valid
+    it 'photo should be present' do
+      subject.photo = nil
+      expect(subject).to_not be_valid
+    end
+
+    it 'bio should be present' do
+      subject.bio = nil
+      expect(subject).to_not be_valid
+    end
+
+    it 'posts_counter should be an interger' do
+      subject.posts_counter = ''
+      expect(subject).to_not be_valid
+    end
+
+    it 'posts_counter should be greater than or equal to 0' do
+      subject.posts_counter = -1
+      expect(subject).to_not be_valid
+    end
   end
 
-  it 'Post counter must be integer' do
-    subject.post_counter = 'z'
-    expect(subject).to_not be_valid
-  end
+  describe '#recent_posts' do
+    let(:user) { User.create(name: 'Taflon', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.') }
 
-  it 'Post counter should be 0 or greater' do
-    subject.post_counter = -1
-    expect(subject).to_not be_valid
-  end
-end
+    let(:first_post) { user.posts.create(title: 'Hello', text: 'This is my first post') }
+    let(:second_post) { user.posts.create(title: 'I am changing the world!', text: 'This is my second post') }
+    let(:third_post) { user.posts.create(title: 'Coding in progress', text: 'One line at a time') }
+    let(:fourth_post) { user.posts.create(title: 'Show love', text: 'You cant love too much') }
 
-describe 'Tests:' do
-  it 'recent_posts method  return zero(0) when user is created' do
-    new_user = User.new(name: 'Elli', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from China.')
-    puts new_user.recent_posts
-    expect(new_user.recent_posts.count).to eq 0
-  end
+    it 'returns the most recent three posts' do
+      recent_posts = user.recent_posts
 
-  it 'recent_posts method return the last 3 posts of the user' do
-    new_user = User.create(name: 'Elli', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from China.')
-    new_user.recent_posts
+      expect(recent_posts).to contain_exactly(fourth_post, third_post, second_post)
+      expect(recent_posts.length).to eq(3)
+    end
   end
 end

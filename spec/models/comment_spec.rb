@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  let!(:user) { User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.') }
-  let!(:post) { user.posts.build(title: 'Hello', text: 'This is my first post') }
-  subject { post.comments.build(author: user, text: 'Great post!') }
-
-  before { user.save && post.save }
+  user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
+  post = user.posts.create(title: 'Coding in progress', text: 'One line at a time')
+  subject { post.comments.create(author: user, text: 'Hope you all done with your project?') }
 
   it 'validates the presence of text' do
     subject.text = nil

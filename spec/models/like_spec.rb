@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  let!(:user) { User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.') }
-  let!(:post) { user.posts.build(title: 'Coding in progress', text: 'One line at a time') }
-  subject { post.likes.build(author: user) }
-
-  before { user.save && post.save }
+  user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
+  post = user.posts.create(title: 'Coding in progress', text: 'One line at a time')
+  subject { post.likes.create(author: user) }
 
   it 'belongs to an author' do
     subject.author = nil
