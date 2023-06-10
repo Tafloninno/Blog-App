@@ -20,7 +20,5 @@ class Post < ApplicationRecord
     author.update(posts_counter: author.posts.size)
   end
 
-  def perform_cleanup
-  
-  end
+  def perform_cleanup; end
 end
