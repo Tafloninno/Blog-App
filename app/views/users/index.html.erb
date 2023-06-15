@@ -12,7 +12,7 @@
 <div class="names_posts">
   <% @users.each do |user| %>
     <ul class="name_post"> 
-   <li class="list_name"> <%= user.name %> </li>
+   <li class="list_name"><%= link_to user.name, user_path(user), style: 'color: #2b9deef1; text-decoration: none;' %> </li>
    <li class="list_countpost">Number of post: <%= user.posts_counter %> </li>
    </ul>
     <% end %>
