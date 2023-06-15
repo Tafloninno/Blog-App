@@ -1,3 +1,4 @@
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,7 +14,7 @@
  *= require_tree .
  *= require_self
  */
-.main_container {
+ .main_container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -79,6 +80,53 @@ ul {
 
 .allcoment,
 .all-posts {
-  border: 2px solid;
   margin-left: 20%;
+  background-color: #2b9deef1;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+label {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.page-btn {
+  background-color: rgba(43, 157, 238, 0.944);
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=text],
+textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+input[type=submit] {
+  background-color: rgba(43, 157, 238, 0.944);
+  color: white;
+  padding: 14px 20px;
+  margin-left: 90%;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
