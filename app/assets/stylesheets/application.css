@@ -14,7 +14,7 @@
  *= require_tree .
  *= require_self
  */
- .main_container {
+.main_container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -129,4 +129,3 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
 }
-
