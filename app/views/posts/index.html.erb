@@ -2,7 +2,7 @@
     <div class="profile">
         <div class="photos">
             <ul class="photo"> 
-               <li> <img src="<%= @user.photo %>"> </li>
+                <li> <img src="<%= @user.photo %>"> </li>
             </ul>
         </div>
         <div class="names_posts">
@@ -12,28 +12,29 @@
            </ul>
         </div>
     </div>
+
      <button class="page-btn">
         <%= link_to 'Create Post', new_user_post_path(@user), style: 'color: white; text-decoration: none;' %>
      </button>
-      <div class="page-description">
-        <h3> List of previous Posts and respective comments:</h3>
-       </div>
+    <div class="page-description">
+      <h3> List of previous Posts and respective comments:</h3>
+    </div>
 
     <div class="post">
         <% @user.posts.each do |post| %>
-        <ul class="post_info width"> 
-            <h3 class="title"><%= link_to post.title, user_post_path(@user, post), style: 'color: #2b9deef1; text-decoration: none;'%> #<%= post.id%></h3>
-            <li class="bio_content"> <%= post.text %> </li>
-            <li class="list_countcomentlikes">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %> </li>
-        </ul>
-        <div class="post_comment">
-            <% post.recent_comments.each do |comment| %>
-                <ul class="comment width"> 
-                    <li> <%= comment.author.name %>: <%= comment.text%> </li>
-                </ul>
-            <% end %> 
-        </div>
-      <% end %>
+            <ul class="post_info width"> 
+                <h3 class="title"><%= link_to post.title, user_post_path(@user, post), style: 'color: #2b9deef1; text-decoration: none;'%> #<%= post.id%></h3>
+                <li class="bio_content"> <%= post.text %> </li>
+                <li class="list_countcomentlikes">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %> </li>
+            </ul>
+            <div class="post_comment">
+                <% post.recent_comments.each do |comment| %>
+                    <ul class="comment width"> 
+                        <li> <%= comment.author.name %>: <%= comment.text%> </li>
+                    </ul>
+                <% end %> 
+            </div>
+        <% end %>
     </div>
   <button type:submit class="all-posts">Pagination</button>
 </div>
