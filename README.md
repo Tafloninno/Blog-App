@@ -80,9 +80,20 @@ git clone https://github.com/Tafloninno/Blog_App
   ```sh 
   bundle install
   ```
+### Install
+Example command:
+ ```sh 
+    bundle install (install all dependencies)
+  ```
+### Usage
+To run the project redirecting to the root directory of the project and run the following command:
+ ```sh 
+     bin/rails server (to run web application)
+  ```
 ### Run Tests
+To test the web app run the following command:
   ```sh 
-  bin/rails rspec spec
+   rspec spec (  to test the console application)
   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
