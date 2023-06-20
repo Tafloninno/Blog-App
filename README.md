@@ -57,13 +57,9 @@ Blog App is web app to display user comments and post, It allows for new users t
 ### Prerequisites
 
 In order to run this project you need:
--  Git Installed
--  Ruby on Rails Installed
--  Node.js Installed
-- Postgres Database installed
-- Create a local directory that you want to clone the repository.
-- Open the command prompt in the created directory.
-- On the terminal run this command git clone https://github.com/Tafloninno/Blog-App
+- Command line or terminal
+- IDE such as VsCode.
+- Rails needs to be installed on your system.
 
 
 
