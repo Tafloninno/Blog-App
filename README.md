@@ -94,6 +94,12 @@ git clone https://github.com/Tafloninno/Blog_App
 ### 👤 **Mugisha Innocent**:
 - GitHub: [Tafloninno](https://github.com/Tafloninno)
 - LinkedIn: [Mugisha Innocent](https://www.linkedin.com/in/mugisha-innocent/)
+
+### 👤 **Ismail Munyentwari**
+
+- GitHub: [@Ismail-Munyentwari](https://github.com/ismailmunyentwari9)
+- LinkedIn: [@Ismail-Munyentwari](https://www.linkedin.com/in/munyentwari-ismail-754718191/)
+
   
 # 🔭 Future Features:
 - Validations and Model specs.
