@@ -57,13 +57,9 @@ Blog App is web app to display user comments and post, It allows for new users t
 ### Prerequisites
 
 In order to run this project you need:
--  Git Installed
--  Ruby on Rails Installed
--  Node.js Installed
-- Postgres Database installed
-- Create a local directory that you want to clone the repository.
-- Open the command prompt in the created directory.
-- On the terminal run this command git clone https://github.com/Tafloninno/Blog-App
+- Command line or terminal
+- IDE such as VsCode.
+- Rails needs to be installed on your system.
 
 
 
@@ -80,9 +76,20 @@ git clone https://github.com/Tafloninno/Blog_App
   ```sh 
   bundle install
   ```
+### Install
+Example command:
+ ```sh 
+    bundle install (install all dependencies)
+  ```
+### Usage
+To run the project redirecting to the root directory of the project and run the following command:
+ ```sh 
+     bin/rails server (to run web application)
+  ```
 ### Run Tests
+To test the web app run the following command:
   ```sh 
-  bin/rails rspec spec
+   rspec spec (  to test the console application)
   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -94,6 +101,12 @@ git clone https://github.com/Tafloninno/Blog_App
 ### 👤 **Mugisha Innocent**:
 - GitHub: [Tafloninno](https://github.com/Tafloninno)
 - LinkedIn: [Mugisha Innocent](https://www.linkedin.com/in/mugisha-innocent/)
+
+### 👤 **Ismail Munyentwari**
+
+- GitHub: [@Ismail-Munyentwari](https://github.com/ismailmunyentwari9)
+- LinkedIn: [@Ismail-Munyentwari](https://www.linkedin.com/in/munyentwari-ismail-754718191/)
+
   
 # 🔭 Future Features:
 - Validations and Model specs.
