@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :system do
-  subject { User.new(name: 'Anna', posts_counter: 3, photo: 'https://randomuser.me/api/portraits/women/67.jpg', bio: 'Project manager') }
+  subject { User.new(name: 'Tom', posts_counter: 3, photo: 'https://pic.com', bio: 'Project manager') }
 
   before { subject.save }
 
@@ -38,7 +38,7 @@ RSpec.describe User, type: :system do
 
     it "I can see a button that lets me view all of a user's posts." do
       visit user_path(subject.id)
-      expect(page).to have_button('See all post')
+      expect(page).to have_button('See all Post')
     end
 
     it "When I click a user's post, it redirects me to that post's show page." do
@@ -50,9 +50,10 @@ RSpec.describe User, type: :system do
     end
 
     it "When I click to see all posts, it redirects me to the user's post's index page." do
-      visit user_posts_path(subject)
-      click_link 'First Post'
-      expect(current_path).to match(user_posts_path(subject.id))
+      Post.create(author: subject, title: 'First Post', text: 'First post')
+      visit user_path(subject.id)
+      click_link 'See all Post'
+      expect(page).to have_current_path(user_posts_path(subject))
     end
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'capybara/rspec'
 
 RSpec.describe Post, type: :system do
-  user = User.create(name: 'User 2', posts_counter: 3, photo: 'https://cdn-icons-png.flaticon.com/512/21/21104.png',
+  user = User.create(name: 'Tom', posts_counter: 3, photo: 'https://pic.com',
                      bio: 'Project manager')
   subject do
     Post.new(author_id: user.id, title: 'Post 2', text: 'Text for Post 2', comments_counter: 2, likes_counter: 2)
