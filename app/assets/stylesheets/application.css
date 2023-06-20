@@ -46,6 +46,10 @@ ul {
   width: 9vw;
   height: 12vh;
 }
+.photo img{
+  width: 120px;
+  height: 90px;
+}
 
 .name_post {
   display: flex;
