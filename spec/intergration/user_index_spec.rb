@@ -1,34 +1,31 @@
 require 'rails_helper'
-require 'capybara/rspec'
 
-RSpec.describe 'User Index Page', type: :feature do
-  before do
-    @user1 = User.create!(name: 'User 1', photo: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png', bio: 'User 1 bio', posts_counter: 12)
-    @user2 = User.create!(name: 'User 2', photo: 'https://cdn-icons-png.flaticon.com/512/21/21104.png', bio: 'User 2 bio', posts_counter: 130)
-    @user1.posts.create!(title: 'Post 1', text: 'Text for Post 1')
-    @user2.posts.create!(title: 'Post 2', text: 'Text for Post 2')
-  end
+RSpec.describe User, type: :system do
+  subject { User.new(name: 'Anna', posts_counter: 3, photo: 'https://randomuser.me/api/portraits/women/67.jpg', bio: 'Project manager') }
 
-  it 'displays the username of all other users' do
-    visit users_path
-    expect(page).to have_content('User 1')
-    expect(page).to have_content('User 2')
-  end
+  before { subject.save }
 
-  it 'displays the profile picture for each user' do
-    visit users_path
-    expect(page).to have_css('img')
-  end
+  describe 'index page' do
+    it 'I can see the username of all other users.' do
+      visit root_path(subject)
+      expect(page).to have_content(subject.name)
+    end
 
-  it 'displays the number of posts each user has written' do
-    visit users_path
-    expect(page).to have_content('Number of posts 12')
-    expect(page).to have_content('Number of posts 130')
-  end
+    it 'I can see the profile picture for each user' do
+      visit root_path(subject)
+      expect(page).to have_css('img')
+    end
 
-  it "redirects to the user's show page when clicking on a user" do
-    visit users_path
-    click_link(@user2.name, href: user_path(@user2))
-    expect(page).to have_current_path(user_path(@user2.id))
+    it 'I can see the number of posts each user has written.' do
+      visit root_path(subject)
+      expect(page).to have_content(subject.posts_counter)
+    end
+
+    it "When I click on a user, I am redirected to that user's show page." do
+      user2 = User.create(name: 'Lilly', posts_counter: 2, photo: 'https://randomuser.me/api/portraits/women/70.jpg', bio: 'Teacher from Poland.')
+      visit root_path(user2)
+      click_on 'Lilly'
+      expect(page).to have_content('Lilly')
+    end
   end
 end

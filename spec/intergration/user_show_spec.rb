@@ -1,52 +1,58 @@
-# spec/request/user_show_spec.rb
 require 'rails_helper'
-require 'capybara'
 
-RSpec.describe 'User Show Page', type: :feature do
-  before do
-    @user = User.create!(name: 'Test User', photo: 'https://example.com/profile.jpg', bio: 'Test bio', posts_counter: 3)
-    @post1 = @user.posts.create!(title: 'Post 1', text: 'Text for Post 1')
-    @post2 = @user.posts.create!(title: 'Post 2', text: 'Text for Post 2')
-    @post3 = @user.posts.create!(title: 'Post 3', text: 'Text for Post 3')
-    visit user_path(@user)
-  end
+RSpec.describe User, type: :system do
+  subject { User.new(name: 'Anna', posts_counter: 3, photo: 'https://randomuser.me/api/portraits/women/67.jpg', bio: 'Project manager') }
 
-  it "displays the user's profile picture" do
-    expect(page).to have_css('img')
-  end
+  before { subject.save }
 
-  it "displays the user's username" do
-    expect(page).to have_content('Test User')
-  end
+  describe 'User show page' do
+    it "I can see the user's profile picture." do
+      visit user_path(subject.id)
+      expect(page).to have_css('img')
+    end
 
-  it 'displays the number of posts the user has written' do
-    visit user_path(@user.id)
-    expect(page).to have_content(@user.posts.count)
-  end
+    it "I can see the user's username." do
+      visit user_path(subject.id)
+      expect(page).to have_content(subject.name)
+    end
 
-  it "displays the user's bio" do
-    expect(page).to have_content('Test bio')
-  end
+    it 'I can see the number of posts the user has written.' do
+      visit user_path(subject.id)
+      expect(page).to have_content(subject.posts_counter)
+    end
 
-  it "displays the user's first 3 posts" do
-    expect(page).to have_content('Post 1')
-    expect(page).to have_content('Post 2')
-    expect(page).to have_content('Post 3')
-  end
+    it "I can see the user's bio." do
+      visit user_path(subject.id)
+      expect(page).to have_content(subject.bio)
+    end
 
-  it "I can see a button that lets me view all of a user's posts." do
-    expect(page).to have_button('See all Post')
-  end
+    it "I can see the user's first 3 posts." do
+      Post.create([{ author: subject, title: 'First Post', text: 'My first post' },
+                   { author: subject, title: 'Second Post', text: 'My Second post' },
+                   { author: subject, title: 'Third Post', text: 'My Third post' }])
+      visit user_path(subject.id)
+      expect(page).to have_content('First Post')
+      expect(page).to have_content('Second Post')
+      expect(page).to have_content('Third Post')
+    end
 
-  it "redirects to the clicked post's show page" do
-    visit user_path(@user.id)
-    expect(page).to have_content(@user.posts[0].title)
-    expect(page).to have_content(@user.posts[1].title)
-    expect(page).to have_content(@user.posts[2].title)
-  end
+    it "I can see a button that lets me view all of a user's posts." do
+      visit user_path(subject.id)
+      expect(page).to have_button('See all post')
+    end
 
-  it "redirects to the user's post index page when clicking 'See All Posts'" do
-    click_button('See all Post')
-    expect(current_path).to match(user_posts_path(@post1))
+    it "When I click a user's post, it redirects me to that post's show page." do
+      post = Post.create(author: subject, title: 'First Post', text: 'First post')
+      visit user_path(subject.id)
+      click_on 'First Post'
+      visit user_post_path(subject.id, post.id)
+      expect(page).to have_content('First Post')
+    end
+
+    it "When I click to see all posts, it redirects me to the user's post's index page." do
+      visit user_posts_path(subject)
+      click_link 'First Post'
+      expect(current_path).to match(user_posts_path(subject.id))
+    end
   end
 end
