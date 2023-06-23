@@ -20,7 +20,7 @@
         <div class="button_holder">
             <% if can? :destroy, @post%>
               <button>
-                <%= link_to 'Delete post', user_post_path(@user,@post), data: {
+                <%= button_to 'Delete post', user_post_path(@user,@post), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %>
@@ -32,7 +32,7 @@
                 <ul class="comments width"> 
                     <li> <%= comment.author.name %>: <%= comment.text%> </li>
                 </ul>
-               <button class= "btn btn-danger"> <%= link_to 'Delete Comment',user_post_comment_path(@post.author, @post, comment), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %> </button>
+               <button class= "btn btn-danger"> <%= button_to 'Delete Comment',user_post_comment_path(@post.author, @post, comment), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %> </button>
             <% end %>
        </div>
     </div>
