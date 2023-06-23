@@ -27,6 +27,7 @@
                 <li class="bio_content"> <%= post.text %> </li>
                 <li class="list_countcomentlikes">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %> </li>
             </ul>
+            
             <div class="post_comment">
                 <% post.recent_comments.each do |comment| %>
                     <ul class="comment width"> 
@@ -35,6 +36,7 @@
                 <% end %> 
             </div>
         <% end %>
+
     </div>
   <button type:submit class="all-posts">Pagination</button>
 </div>

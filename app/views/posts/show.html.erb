@@ -15,13 +15,24 @@
             <%= form_with model: Like, url: user_post_likes_path(@posts.author, @posts) do |form| %>
                 <%= form.submit 'Like Post' %>
             <% end %>
+            
+        </div>
+        <div class="button_holder">
+            <% if can? :destroy, @post%>
+              <button>
+                <%= link_to 'Delete post', user_post_path(@user,@post), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
+              </button>
+           <% end %>
         </div>
         <div class="post_comment">
             <% @posts.comments.each do |comment| %>
                 <ul class="comments width"> 
                     <li> <%= comment.author.name %>: <%= comment.text%> </li>
                 </ul>
-
+               <button class= "btn btn-danger"> <%= link_to 'Delete Comment',user_post_comment_path(@post.author, @post, comment), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %> </button>
             <% end %>
        </div>
     </div>
