@@ -19,7 +19,7 @@
         </div>
         <div class="button_holder">
            <% if can? :destroy, @post%>
-        <%= button_to "Delete", user_post_path(id: @post.id), method: :delete, class:"btn btn-outline-danger" %>
+        <%= button_to "Delete post", user_post_path(id: @post.id), method: :delete, class:"delete_button" %>
         <% end %>
         </div>
         <div class="post_comment">
@@ -27,7 +27,7 @@
                 <ul class="comments width"> 
                     <li> <%= comment.author.name %>: <%= comment.text%> </li>
                     <% if can? :destroy, comment %>
-                    <%= button_to "Delete", user_post_comment_path(@post.author, @post, comment), method: :delete, class:"btn btn-outline-danger" %>
+                    <%= button_to "Delete comment", user_post_comment_path(@post.author, @post, comment), method: :delete, class:"delete_button" %>
                     <% end %>
                 </ul>
             <% end %>
