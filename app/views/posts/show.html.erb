@@ -3,36 +3,33 @@
     <div class="post">
         <ul class="post_info width"> 
             <div class="header">
-                <h3 class="title"><%= @posts.title %> #<%= @posts.id%> by <%= @user.name %></h3>
-                <li class="countcomentlikes">Comments:  <%= @posts.comments_counter %>, Likes: <%= @posts.likes_counter %> </li>
+                <h3 class="title"><%= @post.title %> #<%= @post.id%> by <%= @user.name %></h3>
+                <li class="countcomentlikes">Comments:  <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %> </li>
             </div>
-            <li class="bio_content"> <%= @posts.text %> </li>
+            <li class="bio_content"> <%= @post.text %> </li>
         </ul>
         <button class="page-btn">
-            <%= link_to 'Add New Comment', new_user_post_comment_path(@posts.author, @posts), style: 'color: white; text-decoration: none;' %>
+            <%= link_to 'Add New Comment', new_user_post_comment_path(@post.author, @post), style: 'color: white; text-decoration: none;' %>
         </button>
         <div class="general-btn">
-            <%= form_with model: Like, url: user_post_likes_path(@posts.author, @posts) do |form| %>
+            <%= form_with model: Like, url: user_post_likes_path(@post.author, @post) do |form| %>
                 <%= form.submit 'Like Post' %>
             <% end %>
             
         </div>
         <div class="button_holder">
-            <% if can? :destroy, @post%>
-              <button>
-                <%= button_to 'Delete post', user_post_path(@user,@post), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %>
-              </button>
-           <% end %>
+           <% if can? :destroy, @post%>
+        <%= button_to "Delete", user_post_path(id: @post.id), method: :delete, class:"btn btn-outline-danger" %>
+        <% end %>
         </div>
         <div class="post_comment">
-            <% @posts.comments.each do |comment| %>
+            <% @post.comments.each do |comment| %>
                 <ul class="comments width"> 
                     <li> <%= comment.author.name %>: <%= comment.text%> </li>
+                    <% if can? :destroy, comment %>
+                    <%= button_to "Delete", user_post_comment_path(@post.author, @post, comment), method: :delete, class:"btn btn-outline-danger" %>
+                    <% end %>
                 </ul>
-               <button class= "btn btn-danger"> <%= button_to 'Delete Comment',user_post_comment_path(@post.author, @post, comment), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %> </button>
             <% end %>
        </div>
     </div>

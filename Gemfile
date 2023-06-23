@@ -82,3 +82,4 @@ gem 'rails-controller-testing'
 
 gem 'cancancan'
 gem 'devise', '~> 4.9'
+gem 'pagy'
