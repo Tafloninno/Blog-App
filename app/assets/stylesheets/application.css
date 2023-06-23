@@ -134,3 +134,11 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
 }
+
+.delete_button {
+  color: white;
+  background-color: red;
+  padding: 12px;
+  border-radius: 7px;
+  border: none;
+}

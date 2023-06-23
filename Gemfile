@@ -59,6 +59,7 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'letter_opener'
   gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -79,4 +80,6 @@ group :development, :test do
 end
 gem 'rails-controller-testing'
 
+gem 'cancancan'
 gem 'devise', '~> 4.9'
+gem 'pagy'
